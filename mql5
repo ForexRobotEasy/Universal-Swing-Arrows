@@ -1,0 +1,80 @@
+
+//+------------------------------------------------------------------+
+//|                                                     Universal Swing Arrows                                                    |
+//|                                      Developed by Forex Robot Easy Team for forexroboteasy.com                           |
+//|                                                                                                                                  |
+//|                                                                                                                                  |
+//|                                                                                                                                  |
+//+------------------------------------------------------------------+
+
+#property copyright 'Forex Robot Easy Team'
+#property link      'forexroboteasy.com'
+
+//+------------------------------------------------------------------+
+//|                                                     Global Variables                                                         |
+//+------------------------------------------------------------------+
+extern int    Period     = 14;       // Period for swing high/low calculation
+extern double StopLoss   = 50.0;     // Stop loss level in pips
+extern double Fluctuation = 20.0;    // Maximum allowed price fluctuation in pips
+
+//+------------------------------------------------------------------+
+//|                                               Custom Indicator Initialization                                          |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Add indicator initialization code here
+    // ...
+    
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                                                     Custom Indicator Calculation                                         |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime &time[],
+                const double &open[],
+                const double &high[],
+                const double &low[],
+                const double &close[],
+                const long &tick_volume[],
+                const long &volume[],
+                const int &spread[])
+{
+    // Add indicator calculation code here
+    // ...
+    // Identify swing highs and lows
+    // Determine trend direction
+    // Calculate stop loss level
+    // Generate buy or sell signals
+    
+    // Example code for generating a buy signal with arrow
+    int arrowUp = iCustom(NULL, 0, 'Universal Swing Arrows', Period, StopLoss, Fluctuation, MODE_UP, 0);
+    if (arrowUp != EMPTY_VALUE)
+    {
+        // Execute buy trade
+        // ...
+        Print('Buy signal generated with arrow');
+    }
+    
+    // Example code for generating a sell signal with arrow
+    int arrowDown = iCustom(NULL, 0, 'Universal Swing Arrows', Period, StopLoss, Fluctuation, MODE_DOWN, 0);
+    if (arrowDown != EMPTY_VALUE)
+    {
+        // Execute sell trade
+        // ...
+        Print('Sell signal generated with arrow');
+    }
+    
+    return(rates_total);
+}
+
+//+------------------------------------------------------------------+
+//|                                                      Custom Indicator Deinitialization                                        |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Add indicator deinitialization code here
+    // ...
+}
